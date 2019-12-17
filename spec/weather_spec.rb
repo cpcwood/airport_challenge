@@ -2,13 +2,12 @@ require 'weather'
 
 describe Weather do
   it 'Says the is good' do
-    # Seed rand so that rand(10) will not eq 3
-    srand(2)
+    allow(subject).to receive(:rand).and_return 2
     expect(subject.good_weather?).to eq true
   end
 
   it 'Says the weather is bad' do
-    srand(20)
+    allow(subject).to receive(:rand).and_return 3
     expect(subject.good_weather?).to eq false
   end
 end
